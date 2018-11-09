@@ -22,7 +22,8 @@ namespace I1.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            ViewBag.cars = repo.GetCars();
+            ViewBag.brands = repo.GetCarBrands();
+            ViewBag.types = repo.GetCarTypes();
             return View(repo.GetCar(id));
         }
 
@@ -44,6 +45,8 @@ namespace I1.Controllers
         [HttpGet]
         public ActionResult Add()
         {
+            ViewBag.brands = repo.GetCarBrands();
+            ViewBag.types = repo.GetCarTypes();
             return View();
         }
 
@@ -57,7 +60,8 @@ namespace I1.Controllers
             }
             else
             {
-                ViewBag.cars = repo.GetCars();
+                ViewBag.brands = repo.GetCarBrands();
+                ViewBag.types = repo.GetCarTypes();
                 return View(c);
             }
         }

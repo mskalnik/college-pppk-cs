@@ -23,7 +23,10 @@ namespace I1.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            ViewBag.orders = repo.GetTravelOrders();
+            ViewBag.types = repo.GetTravelOrderTypes();
+            ViewBag.drivers = repo.GetDrivers();
+            ViewBag.cities = repo.GetCities();
+            ViewBag.car = repo.GetCars();
             return View(repo.GetTravelOrder(id));
         }
 
@@ -37,7 +40,10 @@ namespace I1.Controllers
             }
             else
             {
-                ViewBag.orders = repo.GetTravelOrders();
+                ViewBag.types = repo.GetTravelOrderTypes();
+                ViewBag.drivers = repo.GetDrivers();
+                ViewBag.cities = repo.GetCities();
+                ViewBag.car = repo.GetCars();
                 return View(t);
             }
         }
@@ -45,6 +51,10 @@ namespace I1.Controllers
         [HttpGet]
         public ActionResult Add()
         {
+            ViewBag.types = repo.GetTravelOrderTypes();
+            ViewBag.drivers = repo.GetDrivers();
+            ViewBag.cities = repo.GetCities();
+            ViewBag.car = repo.GetCars();
             return View();
         }
 
@@ -58,7 +68,10 @@ namespace I1.Controllers
             }
             else
             {
-                ViewBag.orders = repo.GetTravelOrders();
+                ViewBag.types = repo.GetTravelOrderTypes();
+                ViewBag.drivers = repo.GetDrivers();
+                ViewBag.cities = repo.GetCities();
+                ViewBag.car = repo.GetCars();
                 return View(t);
             }
         }
