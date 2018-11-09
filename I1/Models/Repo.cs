@@ -18,7 +18,7 @@ namespace I1.Models
             throw new NotImplementedException();
         }
 
-        public bool DeleteDriver(int id)
+        public void DeleteDriver(int id)
         {
             throw new NotImplementedException();
         }

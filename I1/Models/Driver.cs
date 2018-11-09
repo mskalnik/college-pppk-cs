@@ -13,9 +13,12 @@ namespace I1.Models
         public string PhoneNumber { get; set; }
         public string DriversLicenceNumber { get; set; }
 
-        public override string ToString()
+        public Driver(string firstName, string lastName, string phoneNumber, string driversLicenceNumber)
         {
-            return base.ToString();
+            FirstName = firstName;
+            LastName = lastName;
+            PhoneNumber = phoneNumber;
+            DriversLicenceNumber = driversLicenceNumber;
         }
     }
 }

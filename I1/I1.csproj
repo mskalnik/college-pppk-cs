@@ -155,10 +155,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\CarBrand.cs" />
+    <Compile Include="Models\CarType.cs" />
+    <Compile Include="Models\City.cs" />
     <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\Fuel.cs" />
     <Compile Include="Models\IRepo.cs" />
     <Compile Include="Models\Repo.cs" />
     <Compile Include="Models\RepoFactory.cs" />
+    <Compile Include="Models\TravelOrder.cs" />
+    <Compile Include="Models\TravelOrderType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

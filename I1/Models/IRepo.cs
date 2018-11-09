@@ -11,6 +11,6 @@ namespace I1.Models
         Driver GetDriver(int id);
         void AddDriver(Driver driver);
         void EditDriver(Driver driver);
-        bool DeleteDriver(int id);
+        void DeleteDriver(int id);
     }
 }
