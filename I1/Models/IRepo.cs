@@ -20,5 +20,19 @@ namespace I1.Models
         void AddCar(Car car);
         void EditCar(Car car);
         void DeleteCar(int id);
+
+        //TraverOrder
+        List<TravelOrder> GetTravelOrders();
+        TravelOrder GetTravelOrder(int id);
+        void AddTravelOrder(TravelOrder to);
+        void EditTravelOrder(TravelOrder to);
+        void DeleteTravelOrder(int id);
+
+        //Help
+        List<CarBrand> GetCarBrands();
+        List<CarType> GetCarTypes();
+        List<City> GetCities();
+        List<Fuel> GetFuels();
+        List<TravelOrderType> GetTravelOrderTypes();
     }
 }

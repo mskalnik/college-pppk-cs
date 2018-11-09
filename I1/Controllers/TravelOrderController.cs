@@ -7,36 +7,34 @@ using System.Web.Mvc;
 
 namespace I1.Controllers
 {
-    public class CarController : Controller
+    public class TravelOrderController : Controller
     {
-        IRepo repo = new Repo();
+        IRepo repo = RepoFactory.GetRepo();
 
-        // GET: Car
         public ActionResult All()
         {
-            ViewBag.types = repo.GetCarTypes();
-            return View(repo.GetCars());
+            return View(repo.GetTravelOrders());
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            ViewBag.cars = repo.GetCars();
-            return View(repo.GetCar(id));
+            ViewBag.orders = repo.GetTravelOrders();
+            return View(repo.GetTravelOrder(id));
         }
 
         [HttpPost]
-        public ActionResult Edit(Car c)
+        public ActionResult Edit(TravelOrder t)
         {
             if (ModelState.IsValid)
             {
-                repo.EditCar(c);
+                repo.EditTravelOrder(t);
                 return RedirectToAction("All");
             }
             else
             {
-                ViewBag.cars = repo.GetCars();
-                return View(c);
+                ViewBag.orders = repo.GetTravelOrders();
+                return View(t);
             }
         }
 
@@ -47,17 +45,17 @@ namespace I1.Controllers
         }
 
         [HttpPost]
-        public ActionResult Add(Car c)
+        public ActionResult Add(TravelOrder t)
         {
             if (ModelState.IsValid)
             {
-                repo.AddCar(c);
+                repo.AddTravelOrder(t);
                 return RedirectToAction("All");
             }
             else
             {
-                ViewBag.cars = repo.GetCars();
-                return View(c);
+                ViewBag.orders = repo.GetTravelOrders();
+                return View(t);
             }
         }
     }

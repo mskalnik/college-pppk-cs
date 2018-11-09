@@ -151,6 +151,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\TravelOrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -492,6 +493,9 @@
     <Content Include="Views\Car\All.cshtml" />
     <Content Include="Views\Car\Edit.cshtml" />
     <Content Include="Views\Car\Add.cshtml" />
+    <Content Include="Views\TravelOrder\All.cshtml" />
+    <Content Include="Views\TravelOrder\Edit.cshtml" />
+    <Content Include="Views\TravelOrder\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
