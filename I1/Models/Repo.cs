@@ -62,17 +62,44 @@ namespace I1.Models
 
         public void DeleteCar(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                con.Open();
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = $"IF EXISTS (SELECT * FROM TravelOrder WHERE CarID = '{id}') BEGIN DELETE FROM TravelOrder WHERE CarID = '{id}' END ELSE BEGIN DELETE FROM Car WHERE IDCar = '{id}' END";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void DeleteDriver(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                con.Open();
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = $"IF EXISTS (SELECT * FROM TravelOrder WHERE DriverID = '{id}') BEGIN DELETE FROM TravelOrder WHERE DriverID = '{id}' END ELSE BEGIN DELETE FROM Driver WHERE IDDriver = '{id}' END";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void DeleteTravelOrder(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                con.Open();
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = $"IF EXISTS (SELECT * FROM Cost WHERE TravelOrderID = '{id}') BEGIN DELETE FROM Cost WHERE TravelOrderID = '{id}' END ELSE BEGIN  DELETE FROM TravelOrder WHERE IDTravelOrder = '{id}' END";
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void EditCar(Car car)

@@ -75,5 +75,12 @@ namespace I1.Controllers
                 return View(t);
             }
         }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            repo.DeleteTravelOrder(id);
+            return RedirectToAction("All");
+        }
     }
 }

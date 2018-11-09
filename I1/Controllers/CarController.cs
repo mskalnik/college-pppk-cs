@@ -65,5 +65,12 @@ namespace I1.Controllers
                 return View(c);
             }
         }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            repo.DeleteCar(id);
+            return RedirectToAction("All");
+        }
     }
 }
