@@ -9,10 +9,5 @@ namespace I1.Models
     {
         public int IDTravelOrderType { get; set; }
         public string Type { get; set; }
-
-        public TravelOrderType(string type)
-        {
-            Type = type;
-        }
     }
 }

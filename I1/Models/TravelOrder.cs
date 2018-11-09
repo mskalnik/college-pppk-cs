@@ -15,16 +15,5 @@ namespace I1.Models
         public int DriverID { get; set; }
         public int StartCityID { get; set; }
         public int FinishCityID { get; set; }
-
-        public TravelOrder(int distance, DateTime startDate, DateTime endDate, int travelOrderTypeID, int driverID, int startCityID, int finishCityID)
-        {
-            Distance = distance;
-            StartDate = startDate;
-            EndDate = endDate;
-            TravelOrderTypeID = travelOrderTypeID;
-            DriverID = driverID;
-            StartCityID = startCityID;
-            FinishCityID = finishCityID;
-        }
     }
 }

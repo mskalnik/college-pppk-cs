@@ -12,13 +12,5 @@ namespace I1.Models
         public int InitialKm { get; set; }
         public int YearOfProduction { get; set; }
         public int CarTypeID { get; set; }
-
-        public Car(string registration, int initialKm, int yearOfProduction, int carTypeID)
-        {
-            Registration = registration;
-            InitialKm = initialKm;
-            YearOfProduction = yearOfProduction;
-            CarTypeID = carTypeID;
-        }
     }
 }

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<I1.Models.Car>
+
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>Car List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IDCar)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Registration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InitialKm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YearOfProduction)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarTypeID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IDCar)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Registration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InitialKm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YearOfProduction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarTypeID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDCar }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IDCar })
+        </td>
+    </tr>
+}
+
+</table>

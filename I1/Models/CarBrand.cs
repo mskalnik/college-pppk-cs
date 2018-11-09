@@ -9,10 +9,5 @@ namespace I1.Models
     {
         public int IDCarBrand { get; set; }
         public string Name { get; set; }
-
-        public CarBrand(string name)
-        {
-            Name = name;
-        }
     }
 }

@@ -488,6 +488,10 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Driver\All.cshtml" />
     <Content Include="Views\Driver\Edit.cshtml" />
+    <Content Include="Views\Driver\Add.cshtml" />
+    <Content Include="Views\Car\All.cshtml" />
+    <Content Include="Views\Car\Edit.cshtml" />
+    <Content Include="Views\Car\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,16 +4,16 @@
     ViewBag.Title = "All";
 }
 
-<h2>All</h2>
+<h2>Driver List</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Add")
 </p>
-<table class="table">
-    <tr>
-        <th>
+<table class="table table-striped table-bordered table-hover">
+    <tr class="thead-dark">
+        @*<th>
             @Html.DisplayNameFor(model => model.IDDriver)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -31,9 +31,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.IDDriver)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>

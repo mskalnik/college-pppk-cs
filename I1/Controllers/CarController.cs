@@ -1,4 +1,5 @@
-﻿using System;
+﻿using I1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,55 @@ namespace I1.Controllers
 {
     public class CarController : Controller
     {
-        // GET: Vehicle
-        public ActionResult Index()
+        IRepo repo = new Repo();
+
+        // GET: Car
+        public ActionResult All()
+        {
+            return View(repo.GetCars());
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            ViewBag.cars = repo.GetCars();
+            return View(repo.GetCar(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Car c)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.EditCar(c);
+                return RedirectToAction("All");
+            }
+            else
+            {
+                ViewBag.cars = repo.GetCars();
+                return View(c);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Add()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(Car c)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.AddCar(c);
+                return RedirectToAction("All");
+            }
+            else
+            {
+                ViewBag.gradovi = repo.GetCars();
+                return View(c);
+            }
         }
     }
 }

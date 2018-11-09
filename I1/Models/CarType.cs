@@ -10,11 +10,5 @@ namespace I1.Models
         public int IDCarType { get; set; }
         public string Name { get; set; }
         public int CarBrandID { get; set; }
-
-        public CarType(string name, int carBrandID)
-        {
-            Name = name;
-            CarBrandID = carBrandID;
-        }
     }
 }

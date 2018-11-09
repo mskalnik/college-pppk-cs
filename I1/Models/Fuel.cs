@@ -9,10 +9,5 @@ namespace I1.Models
     {
         public int IDFuel { get; set; }
         public string Name { get; set; }
-
-        public Fuel(string name)
-        {
-            Name = name;
-        }
     }
 }

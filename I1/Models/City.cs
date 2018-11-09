@@ -9,10 +9,5 @@ namespace I1.Models
     {
         public int IDCity { get; set; }
         public string Name { get; set; }
-
-        public City(string name)
-        {
-            Name = name;
-        }
     }
 }

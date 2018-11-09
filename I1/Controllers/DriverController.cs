@@ -37,5 +37,26 @@ namespace I1.Controllers
                 return View(d);
             }
         }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(Driver d)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.AddDriver(d);
+                return RedirectToAction("All");
+            }
+            else
+            {
+                ViewBag.gradovi = repo.GetDrivers();
+                return View(d);
+            }
+        }
     }
 }
