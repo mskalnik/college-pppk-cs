@@ -14,6 +14,7 @@ namespace I1.Controllers
         // GET: Car
         public ActionResult All()
         {
+            ViewBag.brands = repo.GetCarBrands();
             ViewBag.types = repo.GetCarTypes();
             return View(repo.GetCars());
         }

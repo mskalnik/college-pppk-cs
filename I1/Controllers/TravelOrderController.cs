@@ -13,6 +13,10 @@ namespace I1.Controllers
 
         public ActionResult All()
         {
+            ViewBag.types = repo.GetTravelOrderTypes();
+            ViewBag.drivers = repo.GetDrivers();
+            ViewBag.cities = repo.GetCities();
+            ViewBag.car = repo.GetCars();
             return View(repo.GetTravelOrders());
         }
 
