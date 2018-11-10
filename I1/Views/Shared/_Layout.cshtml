@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - PPPK Project</title>
-    @Styles.Render("~/Content/fontawesome")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -18,13 +17,13 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <i class="fa fa-car"></i>@Html.ActionLink("Drivers", "All", "Driver", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Drivers", "All", "Driver", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            <i class="fa fa-home"></i>@Html.ActionLink("Cars", "All", "Car", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Cars", "All", "Car", null, new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
-                            <i class="fa fa-users"></i>@Html.ActionLink("Trave orders", "All", "TravelOrder", null, new { @class = "nav-link" })
+                            @Html.ActionLink("Trave orders", "All", "TravelOrder", null, new { @class = "nav-link" })
                         </li>
                     </ul>
                 </div>
