@@ -23,6 +23,7 @@ namespace I1.Models
 
         //TraverOrder
         List<TravelOrder> GetTravelOrders();
+        List<TravelOrder> GetTravelOrders(int id);
         TravelOrder GetTravelOrder(int id);
         void AddTravelOrder(TravelOrder to);
         void EditTravelOrder(TravelOrder to);

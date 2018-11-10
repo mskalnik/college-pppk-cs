@@ -161,9 +161,9 @@
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\Fuel.cs" />
-    <Compile Include="Models\IRepo.cs" />
-    <Compile Include="Models\Repo.cs" />
-    <Compile Include="Models\RepoFactory.cs" />
+    <Compile Include="Dal\IRepo.cs" />
+    <Compile Include="Dal\Repo.cs" />
+    <Compile Include="Dal\RepoFactory.cs" />
     <Compile Include="Models\TravelOrder.cs" />
     <Compile Include="Models\TravelOrderType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -488,6 +488,10 @@
     <Content Include="Views\TravelOrder\All.cshtml" />
     <Content Include="Views\TravelOrder\Edit.cshtml" />
     <Content Include="Views\TravelOrder\Add.cshtml" />
+    <Content Include="Views\TravelOrder\Open.cshtml" />
+    <Content Include="Views\TravelOrder\Closed.cshtml" />
+    <Content Include="Views\TravelOrder\Future.cshtml" />
+    <Content Include="Views\TravelOrder\Filtered.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

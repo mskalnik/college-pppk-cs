@@ -20,6 +20,42 @@ namespace I1.Controllers
             return View(repo.GetTravelOrders());
         }
 
+        public ActionResult Open()
+        {
+            ViewBag.types = repo.GetTravelOrderTypes();
+            ViewBag.drivers = repo.GetDrivers();
+            ViewBag.cities = repo.GetCities();
+            ViewBag.car = repo.GetCars();
+            return View(repo.GetTravelOrders(1));
+        }
+
+        public ActionResult Closed()
+        {
+            ViewBag.types = repo.GetTravelOrderTypes();
+            ViewBag.drivers = repo.GetDrivers();
+            ViewBag.cities = repo.GetCities();
+            ViewBag.car = repo.GetCars();
+            return View(repo.GetTravelOrders(2));
+        }
+
+        public ActionResult Future()
+        {
+            ViewBag.types = repo.GetTravelOrderTypes();
+            ViewBag.drivers = repo.GetDrivers();
+            ViewBag.cities = repo.GetCities();
+            ViewBag.car = repo.GetCars();
+            return View(repo.GetTravelOrders(3));
+        }
+
+        public ActionResult Filtered()
+        {
+            ViewBag.types = repo.GetTravelOrderTypes();
+            ViewBag.drivers = repo.GetDrivers();
+            ViewBag.cities = repo.GetCities();
+            ViewBag.car = repo.GetCars();
+            return View(repo.GetTravelOrders(4));
+        }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {

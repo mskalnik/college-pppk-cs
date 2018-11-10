@@ -51,11 +51,21 @@ namespace I1.Models
             using (SqlConnection con = new SqlConnection(cs))
             {
                 con.Open();
-                using (SqlCommand cmd = con.CreateCommand())
+                SqlTransaction transaction = con.BeginTransaction();
+                try
                 {
-                    cmd.CommandText = $"INSERT INTO TravelOrder VALUES('{to.Distance}', '{to.StartDate}', '{to.EndDate}', '{to.TravelOrderTypeID}', '{to.DriverID}', '{to.StartCityID}', '{to.FinishCityID}', '{to.CarID}')";
-                    cmd.CommandType = CommandType.Text;
-                    cmd.ExecuteNonQuery();
+                    using (SqlCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = $"INSERT INTO TravelOrder VALUES('{to.Distance}', '{to.StartDate}', '{to.EndDate}', '{to.TravelOrderTypeID}', '{to.DriverID}', '{to.StartCityID}', '{to.FinishCityID}', '{to.CarID}')";
+                        cmd.CommandType = CommandType.Text;
+                        transaction.Commit();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
                 }
             }
         }
@@ -93,10 +103,13 @@ namespace I1.Models
             using (SqlConnection con = new SqlConnection(cs))
             {
                 con.Open();
+                SqlTransaction transaction = con.BeginTransaction();
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = $"IF EXISTS (SELECT * FROM Cost WHERE TravelOrderID = '{id}') BEGIN DELETE FROM Cost WHERE TravelOrderID = '{id}' END ELSE BEGIN  DELETE FROM TravelOrder WHERE IDTravelOrder = '{id}' END";
                     cmd.CommandType = CommandType.Text;
+                    transaction.Commit();
+
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -360,6 +373,43 @@ namespace I1.Models
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = "SELECT * FROM TravelOrder";
+                    cmd.CommandType = CommandType.Text;
+
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        if (r.HasRows)
+                        {
+                            while (r.Read())
+                            {
+                                travelOrders.Add(new TravelOrder
+                                {
+                                    IDTravelOrder = (int)r["IDTravelOrder"],
+                                    Distance = (int)r["Distance"],
+                                    StartDate = (DateTime)r["StartDate"],
+                                    EndDate = (DateTime)r["EndDate"],
+                                    TravelOrderTypeID = (int)r["TravelOrderTypeID"],
+                                    DriverID = (int)r["DriverID"],
+                                    StartCityID = (int)r["StartCityID"],
+                                    FinishCityID = (int)r["FinishCityID"],
+                                    CarID = (int)r["CarID"],
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+            return travelOrders;
+        }
+
+        public List<TravelOrder> GetTravelOrders(int id)
+        {
+            List<TravelOrder> travelOrders = new List<TravelOrder>();
+            using (SqlConnection con = new SqlConnection(cs))
+            {
+                con.Open();
+                using (SqlCommand cmd = con.CreateCommand())
+                {
+                    cmd.CommandText = $"SELECT * FROM TravelOrder WHERE TravelOrderTypeID = {id}";
                     cmd.CommandType = CommandType.Text;
 
                     using (SqlDataReader r = cmd.ExecuteReader())

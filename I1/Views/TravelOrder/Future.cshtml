@@ -1,0 +1,78 @@
+﻿@model IEnumerable<I1.Models.TravelOrder>
+@using I1.Models
+
+@{
+    ViewBag.Title = "Future Travel Order List";
+    var types = ViewBag.types as List<TravelOrderType>;
+    var drivers = ViewBag.drivers as List<Driver>;
+    var cities = ViewBag.cities as List<City>;
+    var cars = ViewBag.car as List<Car>;
+}
+
+<h2>Travel Order List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Add") |
+    @Html.ActionLink("Open", "Open")
+    @Html.ActionLink("Closed", "Closed")
+    @Html.ActionLink("Future", "Future")
+    @Html.ActionLink("Filtered", "Filtered")
+</p>
+<table class="table table-striped table-bordered table-hover">
+    <tr class="thead-dark">
+        @*<th>
+                @Html.DisplayNameFor(model => model.IDTravelOrder)
+            </th>*@
+        <th>Type</th>
+        <th>Distance (km)</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Starting City</th>
+        <th>Ending City</th>
+        <th>Car Registration</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.IDTravelOrder)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => types[item.TravelOrderTypeID - 1].Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => drivers[item.DriverID - 1].FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => drivers[item.DriverID - 1].LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => cities[item.StartCityID - 1].Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => cities[item.FinishCityID - 1].Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => cars[item.CarID - 1].Registration)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IDTravelOrder }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IDTravelOrder })
+            </td>
+        </tr>
+    }
+
+</table>

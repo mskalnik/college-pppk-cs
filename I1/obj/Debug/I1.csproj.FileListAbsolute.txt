@@ -88,4 +88,3 @@ C:\Users\ms\Documents\Projects\pppk-cs\PPPK\I1\obj\Debug\I1.csproj.CoreCompileIn
 C:\Users\ms\Documents\Projects\pppk-cs\PPPK\I1\obj\Debug\I1.csproj.CopyComplete
 C:\Users\ms\Documents\Projects\pppk-cs\PPPK\I1\obj\Debug\I1.dll
 C:\Users\ms\Documents\Projects\pppk-cs\PPPK\I1\obj\Debug\I1.pdb
-C:\Users\ms\Documents\Projects\pppk-cs\PPPK\I1\obj\Debug\I1.csprojAssemblyReference.cache
