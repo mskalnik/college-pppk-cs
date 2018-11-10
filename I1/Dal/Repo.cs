@@ -77,8 +77,9 @@ namespace I1.Models
                 con.Open();
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = $"IF EXISTS (SELECT * FROM TravelOrder WHERE CarID = '{id}') BEGIN DELETE FROM TravelOrder WHERE CarID = '{id}' END ELSE BEGIN DELETE FROM Car WHERE IDCar = '{id}' END";
-                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = $"DeleteCar";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IDCar", id);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -91,8 +92,9 @@ namespace I1.Models
                 con.Open();
                 using (SqlCommand cmd = con.CreateCommand())
                 {
-                    cmd.CommandText = $"IF EXISTS (SELECT * FROM TravelOrder WHERE DriverID = '{id}') BEGIN DELETE FROM TravelOrder WHERE DriverID = '{id}' END ELSE BEGIN DELETE FROM Driver WHERE IDDriver = '{id}' END";
-                    cmd.CommandType = CommandType.Text;
+                    cmd.CommandText = "DeleteDriver";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IDDriver", id);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -153,11 +155,21 @@ namespace I1.Models
             using (SqlConnection con = new SqlConnection(cs))
             {
                 con.Open();
-                using (SqlCommand cmd = con.CreateCommand())
+                SqlTransaction transaction = con.BeginTransaction();
+                try
                 {
-                    cmd.CommandText = $"UPDATE TravelOrder SET Distance = '{to.Distance}', StartDate = '{to.StartDate}', EndDate = '{to.EndDate}', TravelOrderTypeID = '{to.TravelOrderTypeID}', DriverID = '{to.DriverID}', StartCityID = '{to.StartCityID}', FinishCityID = '{to.FinishCityID}', CarID = '{to.CarID}' WHERE IDTravelOrder = '{to.IDTravelOrder}'";
-                    cmd.CommandType = CommandType.Text;
-                    cmd.ExecuteNonQuery();
+                    using (SqlCommand cmd = con.CreateCommand())
+                    {
+                        cmd.CommandText = $"UPDATE TravelOrder SET Distance = '{to.Distance}', StartDate = '{to.StartDate}', EndDate = '{to.EndDate}', TravelOrderTypeID = '{to.TravelOrderTypeID}', DriverID = '{to.DriverID}', StartCityID = '{to.StartCityID}', FinishCityID = '{to.FinishCityID}', CarID = '{to.CarID}' WHERE IDTravelOrder = '{to.IDTravelOrder}'";
+                        cmd.CommandType = CommandType.Text;
+                        transaction.Commit();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                    throw;
                 }
             }
         }
@@ -391,9 +403,9 @@ namespace I1.Models
                                     DriverID = (int)r["DriverID"],
                                     StartCityID = (int)r["StartCityID"],
                                     FinishCityID = (int)r["FinishCityID"],
-                                    CarID = (int)r["CarID"],
+                                    CarID = (int)r["CarID"]
                                 });
-                            }
+                            }                                
                         }
                     }
                 }
@@ -428,7 +440,7 @@ namespace I1.Models
                                     DriverID = (int)r["DriverID"],
                                     StartCityID = (int)r["StartCityID"],
                                     FinishCityID = (int)r["FinishCityID"],
-                                    CarID = (int)r["CarID"],
+                                    CarID = (int)r["CarID"]
                                 });
                             }
                         }
