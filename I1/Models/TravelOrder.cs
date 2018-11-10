@@ -11,8 +11,10 @@ namespace I1.Models
         public int IDTravelOrder { get; set; }
         public int Distance { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime StartDate { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
         public int TravelOrderTypeID { get; set; }
         public int DriverID { get; set; }
