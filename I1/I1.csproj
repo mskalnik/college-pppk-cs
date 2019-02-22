@@ -48,6 +48,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -151,7 +157,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\RouteController.cs" />
     <Compile Include="Controllers\TravelOrderController.cs" />
+    <Compile Include="Dal\DaabRepo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -162,8 +170,9 @@
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\Fuel.cs" />
     <Compile Include="Dal\IRepo.cs" />
-    <Compile Include="Dal\Repo.cs" />
+    <Compile Include="Dal\DatabaseRepo.cs" />
     <Compile Include="Dal\RepoFactory.cs" />
+    <Compile Include="Models\Route.cs" />
     <Compile Include="Models\TravelOrder.cs" />
     <Compile Include="Models\TravelOrderType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -492,13 +501,17 @@
     <Content Include="Views\TravelOrder\Closed.cshtml" />
     <Content Include="Views\TravelOrder\Future.cshtml" />
     <Content Include="Views\TravelOrder\Filtered.cshtml" />
+    <Content Include="Views\Route\All.cshtml" />
+    <Content Include="Views\Route\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Vehicle\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<I1.Models.Route>
+
+@{
+    ViewBag.Title = "All";
+}
+
+<h2>All</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Add")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IDRoute)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.StartCoordinate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndCoordinate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FuelUsed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TravelOrderID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IDRoute)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.StartCoordinate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndCoordinate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FuelUsed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TravelOrderID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IDRoute }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.IDRoute })
+        </td>
+    </tr>
+}
+
+</table>
